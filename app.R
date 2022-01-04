@@ -6,9 +6,8 @@ library(palmerpenguins)
 
 # FUNCTIONS
 
-
 # UI
-ui <- fluidPage(
+ui <- dashboardPage(
   dashboardHeader(),
   dashboardSidebar(
     fileInput("upload", NULL, buttonLabel = "Upload", multiple = FALSE, accept = ".csv")
@@ -21,7 +20,7 @@ ui <- fluidPage(
 # SERVER
 server <- function(input, output) {
   # Handle data upload
-  dataset <- shiny::reactice({
+  upload_dataset <- reactive({
     req(input$upload)
     
     # validate input
@@ -34,7 +33,7 @@ server <- function(input, output) {
   
   # Create ouput
   output$head <- renderTable({
-    head(data())
+    head(dataset())
   })
   
 }
