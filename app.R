@@ -1,6 +1,7 @@
 # Load Packages
 library(shiny)
 library(tidyverse)
+library(palmerpenguins)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
